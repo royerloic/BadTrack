@@ -2,6 +2,11 @@ package badtrack.email;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.util.Arrays;
 import java.util.Date;
 
 import badtrack.BadTrack;
@@ -42,6 +47,7 @@ public class GmailBadTrackNotifier extends GmailClient implements
 
     String lMessage = "";
     lMessage += "Report for app: " + pBadTrack.getAppName() + "\n";
+    lMessage += "Unique ID: "+getUniqueId()+ "\n";
     lMessage += "Date and Time: " + new Date() + "\n";
     lMessage += "Uncaught Exception: \n";
     lMessage += "\n";
@@ -55,6 +61,21 @@ public class GmailBadTrackNotifier extends GmailClient implements
 
     sendMessage(getUserName(), getUserName(), lSubject, lMessage);
 
+  }
+
+  private String getUniqueId()
+  {
+    try
+    {
+      byte[] lId = NetworkInterface.getByInetAddress(InetAddress.getLocalHost()).getHardwareAddress();
+      int lHashCode = Math.abs(Arrays.hashCode(lId));
+      return ""+lHashCode;
+    }
+    catch (Throwable e)
+    {
+      e.printStackTrace();
+      return ""; 
+    }
   }
 
 

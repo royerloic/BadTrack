@@ -79,7 +79,7 @@ public class GmailClient
       // message.setContent(pText, "text/html");
       message.setText(pText);
 
-      System.out.println("send email: " + pSubject + "\n" + pText);
+      //System.out.println("send email: " + pSubject + "\n" + pText);
       Transport.send(message);
     }
     catch (Throwable e)
