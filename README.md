@@ -2,7 +2,7 @@
 
 ### BadTrack ###
 
-Dead simple exception tracking for java projects
+Dead simple exception tracking for java projects.
 
 ### How to add BadTrack to your project ?###
 
