@@ -10,18 +10,21 @@ BadTrack has a maven repository:
 
 [ ![Download](https://api.bintray.com/packages/clearcontrol/ClearControl/BadTrack/images/download.svg) ](https://bintray.com/clearcontrol/ClearControl/BadTrack/_latestVersion)
 
+```
 <repository>
     <id>bintray-clearcontrol-ClearControl</id>
     <name>bintray</name>
     <url>http://dl.bintray.com/clearcontrol/ClearControl</url>
 </repository>
-
+```
+```
 <dependency>
   <groupId>net.clearcontrol</groupId>
   <artifactId>BadTrack</artifactId>
   <version>0.1.0</version>
   <type>pom</type>
 </dependency>
+```
 
 ### How to build the project? ###
 
