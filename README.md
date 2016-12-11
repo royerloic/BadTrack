@@ -8,9 +8,20 @@ Dead simple exception tracking for java projects
 
 BadTrack has a maven repository:
 
-https://bintray.com/clearcontrol/ClearControl/BadTrack
-
 [ ![Download](https://api.bintray.com/packages/clearcontrol/ClearControl/BadTrack/images/download.svg) ](https://bintray.com/clearcontrol/ClearControl/BadTrack/_latestVersion)
+
+<repository>
+    <id>bintray-clearcontrol-ClearControl</id>
+    <name>bintray</name>
+    <url>http://dl.bintray.com/clearcontrol/ClearControl</url>
+</repository>
+
+<dependency>
+  <groupId>net.clearcontrol</groupId>
+  <artifactId>BadTrack</artifactId>
+  <version>0.1.0</version>
+  <type>pom</type>
+</dependency>
 
 ### How to build the project? ###
 
@@ -27,10 +38,6 @@ To clean-up modified eclipse project files:
     ./gradlew cleanEclipse
 
 
-### Work in PROGRESS!!!! ###
-
-
 ### Author(s) ###
 
 * royer@mpi-cbg.de
-* you? soon?
