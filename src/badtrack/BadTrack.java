@@ -1,6 +1,7 @@
 package badtrack;
 
 import java.lang.Thread.UncaughtExceptionHandler;
+import java.util.ArrayList;
 
 import badtrack.optin.BadTrackOptInDialog;
 
@@ -20,6 +21,7 @@ public class BadTrack
   private volatile UncaughtExceptionHandler mExistingDefaultUncaughtExceptionHandler =
                                                                                      null;
   private String mSystemInfo = "";
+  private ArrayList<String> mFilterList = new ArrayList<>();
 
   /**
    * Instantiates a BadTrack object for a given app and notifier.
@@ -48,10 +50,48 @@ public class BadTrack
   {
     mNotificationAllowed =
                          BadTrackOptInDialog.askWithSwing(getAppName(),
-                                                    pTitle,
-                                                    pMessage);
+                                                          pTitle,
+                                                          pMessage);
 
     return mNotificationAllowed;
+  }
+
+  /**
+   * Adds filter strings. A reports is sent only if it contains any of the
+   * provided filter strings.
+   * 
+   * @param pFilterString
+   *          filter string
+   */
+  public void addFilter(String... pFilterStringArray)
+  {
+    for (String lFilter : pFilterStringArray)
+      mFilterList.add(lFilter);
+  }
+
+  /**
+   * Returns all current filters
+   * 
+   * @return filter list
+   */
+  public ArrayList<String> getFilters()
+  {
+    return mFilterList;
+  }
+
+  /**
+   * Returns true if the message string passes the filters.
+   * 
+   * @param pMessageString
+   *          message string
+   * @return true if passes, false otherwise
+   */
+  public boolean passesFilters(String pMessageString)
+  {
+    for (String lFilter : mFilterList)
+      if (pMessageString.contains(lFilter))
+        return true;
+    return false;
   }
 
   /**
@@ -216,4 +256,5 @@ public class BadTrack
   {
     return mAppName;
   }
+
 }
