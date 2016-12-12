@@ -47,7 +47,7 @@ public class GmailBadTrackNotifier extends GmailClient implements
 
     String lMessage = "";
     lMessage += "Report for app: " + pBadTrack.getAppName() + "\n";
-    lMessage += pBadTrack.getFilters()+ "\n";
+    lMessage += "Filters: "+pBadTrack.getFilters()+ "\n";
     lMessage += "Unique ID: "+getUniqueId()+ "\n";
     lMessage += "Date and Time: " + new Date() + "\n";
     lMessage += "Uncaught Exception: \n";
