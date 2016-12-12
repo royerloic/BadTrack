@@ -58,19 +58,19 @@ public class GmailClient
                           String pSubject,
                           String pText)
   {
-    Session lSession =
-                     Session.getInstance(mProperties,
-                                         new javax.mail.Authenticator()
-                                         {
-                                           protected PasswordAuthentication getPasswordAuthentication()
-                                           {
-                                             return new PasswordAuthentication(getUserName(),
-                                                                               getPassword());
-                                           }
-                                         });
-
     try
     {
+      Session lSession =
+                       Session.getInstance(mProperties,
+                                           new javax.mail.Authenticator()
+                                           {
+                                             protected PasswordAuthentication getPasswordAuthentication()
+                                             {
+                                               return new PasswordAuthentication(getUserName(),
+                                                                                 getPassword());
+                                             }
+                                           });
+
       Message message = new MimeMessage(lSession);
       message.setFrom(new InternetAddress(pFromEmail));
       message.setRecipients(Message.RecipientType.TO,
@@ -79,7 +79,7 @@ public class GmailClient
       // message.setContent(pText, "text/html");
       message.setText(pText);
 
-      //System.out.println("send email: " + pSubject + "\n" + pText);
+      // System.out.println("send email: " + pSubject + "\n" + pText);
       Transport.send(message);
     }
     catch (Throwable e)
