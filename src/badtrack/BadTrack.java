@@ -26,8 +26,8 @@ public class BadTrack
   /**
    * Instantiates a BadTrack object for a given app and notifier.
    * 
-   * @param pAppName
-   * @param pBackTrackNotifier
+   * @param pAppName application name
+   * @param pBackTrackNotifier notifier
    */
   public BadTrack(String pAppName,
                   BadTrackNotifierInterface pBackTrackNotifier)
@@ -60,7 +60,7 @@ public class BadTrack
    * Adds filter strings. A reports is sent only if it contains any of the
    * provided filter strings.
    * 
-   * @param pFilterString
+   * @param pFilterStringArray
    *          filter string
    */
   public void addFilter(String... pFilterStringArray)
@@ -98,7 +98,7 @@ public class BadTrack
    * Appends a string to the 'system info string' that describes additional
    * important information about the system.
    * 
-   * @param pInfo
+   * @param pInfo info
    */
   public void appendSystemInfo(String pInfo)
   {
@@ -201,7 +201,7 @@ public class BadTrack
               mExistingDefaultUncaughtExceptionHandler.uncaughtException(t,
                                                                          e);
 
-            e.printStackTrace();
+            //e.printStackTrace();
           }
         });
       }
@@ -229,7 +229,7 @@ public class BadTrack
   /**
    * Returns the current system info string.
    * 
-   * @return
+   * @return system info
    */
   public String getSystemInfo()
   {

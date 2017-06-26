@@ -93,5 +93,46 @@ public class BadTrackTests
       e.printStackTrace();
     }
   }
+  
+  @Test
+  public void testNoNotifier() throws InterruptedException
+  {
+    try
+    {
+
+    
+      BadTrack lBadTrack = new BadTrack("Test App",null);
+
+      lBadTrack.askWithSwing("Help Debug ~~APP~~",
+                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \n"
+                             + "Vivamus convallis, odio sit amet pulvinar facilisis, \n"
+                             + "felis felis rhoncus dolor, non ullamcorper neque magna a ex.");
+
+      lBadTrack.appendBasicSystemInfo();
+
+      lBadTrack.startTracking();
+
+      Runnable lRunnable = () -> {
+        throw new RuntimeException("Boom!");
+      };
+      Thread lThread = new Thread(lRunnable);
+      lThread.start();
+      Thread.sleep(1000);
+
+      lBadTrack.stopTracking();
+
+      lThread = new Thread(lRunnable);
+      lThread.start();
+      Thread.sleep(1000);
+      
+      
+      Thread.sleep(3000);
+    }
+    catch (Throwable e)
+    {
+      System.out.println("outer catch");
+      e.printStackTrace();
+    }
+  }
 
 }
